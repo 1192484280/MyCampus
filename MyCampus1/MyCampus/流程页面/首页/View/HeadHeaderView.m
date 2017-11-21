@@ -87,6 +87,7 @@
         
         _menu = [[YANScrollMenu alloc] initWithFrame:CGRectMake(0, ADHeight, ScreenWidth,CATHeight)];
         _menu.delegate = self;
+        
     }
     return _menu;
 }

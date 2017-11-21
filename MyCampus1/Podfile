@@ -4,5 +4,6 @@
 target 'MyCampus' do
 
 
+pod 'JPush'
 
 end

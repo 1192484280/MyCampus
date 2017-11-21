@@ -18,10 +18,6 @@
 - (void)setNavBarHeaderTitle:(NSString *)title;
 
 /**
- * 设置待返回按钮的navbar
- */
-- (void)setupBackBtnNavBarWithTitle:(NSString *)title;
-/**
  * 获取uid
  */
 - (NSString *)getuid;

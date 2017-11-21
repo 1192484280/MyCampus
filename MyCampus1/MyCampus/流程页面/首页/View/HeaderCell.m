@@ -10,28 +10,45 @@
 
 @implementation HeaderCell
 
-+ (instancetype)tempWithTableView:(UITableView *)tableView{
++ (instancetype)tempWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath{
     
-    HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL"];
+    NSString *identity = @"";
+    NSInteger index = 0;
+    
+    switch (indexPath.section) {
+            
+        case 0:
+            identity = @"CELL";
+            index = 0;
+            break;
+            
+        case 1:
+            identity = @"CELL2";
+            index = 1;
+            break;
+        default:
+            break;
+    }
+    HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:identity];
     
     CLASSNAME
     if (!cell) {
         
-        cell = [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] objectAtIndex:0];
+        cell = [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] objectAtIndex:index];
     }
     return cell;
 }
 
-+ (CGFloat)getHeight{
++ (CGFloat)getHeightWithIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [HeaderCell Cell];
+    UITableViewCell *cell = [HeaderCell CellWithIndex:indexPath];
     return cell.frame.size.height;
 }
 
-+ (instancetype)Cell{
++ (instancetype)CellWithIndex:(NSIndexPath *)indexPath{
     
     CLASSNAME
-    return [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] objectAtIndex:0];
+    return [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] objectAtIndex:indexPath.section];
 }
 
 

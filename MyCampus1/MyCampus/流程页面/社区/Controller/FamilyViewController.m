@@ -8,86 +8,26 @@
 
 #import "FamilyViewController.h"
 #import "HeaderViewController.h"
-#import "SortOrderView.h"
-#import "FamilyCell.h"
 #import "PostItemViewController.h"
 
-#define SortTypeViewHeight 250
-@interface FamilyViewController ()<UIPopoverPresentationControllerDelegate,SortOrderViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) UITableView *tableView;
-@property (strong , nonatomic) SortOrderView *sortView;
-@property (copy, nonatomic) NSArray *leftArr;
-@property (copy, nonatomic) NSArray *rightArr;
-@property (weak, nonatomic) UIButton *rightBtn;
-@property (strong , nonatomic) UIView *bgView;
+#import "SMPagerTabView.h"
+#import "TheNewsViewController.h"
+#import "ArticleViewController.h"
+#import "PhotographyViewController.h"
+
+#define SortTypeViewHeight 250
+@interface FamilyViewController ()<UIPopoverPresentationControllerDelegate,SMPagerTabViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray *vcArr;
+@property (nonatomic, strong) SMPagerTabView *segmentView;
 
 @end
 
 @implementation FamilyViewController
 
-- (UIView *)bgView{
-    
-    if (!_bgView) {
-        
-        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight- 64)];
-        _bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-        [_bgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didBgViewClick)]];
-    }
-    return _bgView;
-}
-
-- (SortOrderView *)sortView{
-    
-    if (!_sortView) {
-        
-        _sortView = [[SortOrderView alloc] initWithFrame:CGRectMake(0, 64 - SortTypeViewHeight, ScreenWidth, SortTypeViewHeight) andLeftArr:self.leftArr andRightArr:self.rightArr];
-        _sortView.delegate = self;
-    }
-    return _sortView;
-}
-
-
-- (void)didBgViewClick
-{
-    [self onRightBtn:self.rightBtn];
-}
-
-
-- (NSArray *)leftArr{
-    
-    if (!_leftArr) {
-        
-        _leftArr = @[@[@"icon_filter_timeType_normal"],@[@"时间范围"]];
-    }
-    return _leftArr;
-}
-
-- (NSArray *)rightArr{
-    
-    if (!_rightArr) {
-        
-        _rightArr = @[@[@"全部时间",@"今天",@"明天",@"一周内",@"一个月内"]];
-    }
-    return _rightArr;
-}
-
-- (UITableView *)tableView{
-    
-    if (!_tableView) {
-        
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
-        _tableView.sectionHeaderHeight = 0.5;
-        _tableView.sectionFooterHeight = 5.5;
-        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.5)];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
-    
-    return _tableView;
-}
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.title = @"社区";
@@ -98,56 +38,12 @@
     
 }
 
-- (void)setUI{
-    
-    [self.view addSubview:self.tableView];
-    
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenWidth - 100, ScreenHeight - (NAVBAR_HEIGHT) - (TABBAR_HEIGHT) , 100, 48)];
-    [btn setImage:[UIImage imageNamed:@"icon_myPush"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(onBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-}
-
 - (void)setNavBar{
     
     self.title = @"社区";
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    self.navigationController.navigationBar.barTintColor = BASECOLOR;
-    
-    //取消导航栏最下面的那一条线
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setImage:[[UIImage imageNamed:@"typeSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    rightBtn.size = rightBtn.currentImage.size;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
-    
-    [rightBtn addTarget:self action:@selector(onRightBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    self.rightBtn = rightBtn;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 10;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return [FamilyCell getHeight];
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    FamilyCell *cell = [FamilyCell tempWithTableView:tableView];
-    return cell;
-    
-}
 
 - (void)onBtn:(UIButton *)btn{
     
@@ -183,35 +79,58 @@
     return UIModalPresentationNone;
 }
 
-- (void)onRightBtn:(UIButton *)button{
+
+- (void)setUI{
     
-    button.selected = !button.selected;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    if (button.selected) {
-        [self.view insertSubview:self.bgView belowSubview:self.sortView];
-        [UIView animateWithDuration:0.25 animations:^{
-            button.transform = CGAffineTransformMakeRotation(M_PI);
-            self.sortView.y = 64;
-            self.bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
-        }];
-    }else {
-        [UIView animateWithDuration:0.25 animations:^{
-            button.transform = CGAffineTransformIdentity;
-            self.sortView.y = 64-SortTypeViewHeight;
-            self.bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
-        } completion:^(BOOL finished) {
-            [self.bgView removeFromSuperview];
-        }];
-    }
+    self.view.backgroundColor = [UIColor whiteColor];
+    _vcArr = [NSMutableArray array];
+    
+    TheNewsViewController *vc1 = [[TheNewsViewController alloc]initWithNibName:nil bundle:nil];
+    vc1.title = @"新鲜事";
+    
+    ArticleViewController *vc2 = [[ArticleViewController alloc]initWithNibName:nil bundle:nil];
+    vc2.title = @"文章";
+    
+    PhotographyViewController *vc3 = [[PhotographyViewController alloc]initWithNibName:nil bundle:nil];
+    vc3.title = @"摄影";
+    
+    [_vcArr addObject:vc1];
+    [_vcArr addObject:vc2];
+    [_vcArr addObject:vc3];
+    
+    
+    self.segmentView.delegate = self;
+    //可自定义背景色和tab button的文字颜色等
+    //开始构建UI
+    [_segmentView buildUI];
+    //起始选择一个tab
+    [_segmentView selectTabWithIndex:1 animate:NO];
+    //显示红点，点击消失
+    [_segmentView showRedDotWithIndex:0];
+    
 }
 
-#pragma mark - 选择排序方式
-- (void)didSelectedIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    NSString *a = [NSString stringWithFormat:@"%@",self.rightArr[indexPath.section][indexPath.row]];
-    NSLog(@"%@",a);
-    [self onRightBtn:self.rightBtn];
+#pragma mark - DBPagerTabView Delegate
+- (NSUInteger)numberOfPagers:(SMPagerTabView *)view {
+    return [_vcArr count];
+}
+- (UIViewController *)pagerViewOfPagers:(SMPagerTabView *)view indexOfPagers:(NSUInteger)number {
+    return _vcArr[number];
+}
+
+- (void)whenSelectOnPager:(NSUInteger)number {
+    NSLog(@"页面 %lu",(unsigned long)number);
+}
+
+#pragma mark - setter/getter
+- (SMPagerTabView *)segmentView {
+    if (!_segmentView) {
+        self.segmentView = [[SMPagerTabView alloc]initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, ScreenWidth, ScreenHeight - (NAVBAR_HEIGHT))];
+        [self.view addSubview:_segmentView];
+    }
+    return _segmentView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -219,14 +138,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

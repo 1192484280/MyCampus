@@ -25,10 +25,12 @@
 
 @property (weak, nonatomic) UIButton *currentBtn;
 @property (strong, nonatomic) NSMutableArray *photoArr;
+@property (strong, nonatomic) UICollectionView *collectionView;
 
 @end
 
 @implementation PostItemViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,24 +40,24 @@
 }
 
 - (void)setUI{
-    
+
     topHeight.constant = NAVBAR_HEIGHT;
     viewHeight.constant = ScreenHeight - (NAVBAR_HEIGHT);
     noteText.delegate = self;
-    
+
     PhotoView *view = [[PhotoView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(noteText.frame) + 50, ScreenWidth, 116)];
     [view returnText:^(NSArray *photoArr) {
-        
+
         NSLog(@"图片数量%lu",photoArr.count - 1);
     }];
     [bottonview addSubview:view];
-    
+
     [noteText wzb_autoHeightWithMaxHeight:ScreenHeight - (NAVBAR_HEIGHT) - 200 textViewHeightDidChanged:^(CGFloat currentTextViewHeight){
         NSLog(@"");
-        
+
         view.y = currentTextViewHeight + 50;
     }];
-    
+
 }
 
 - (void)textViewDidChange:(UITextView *)textView{

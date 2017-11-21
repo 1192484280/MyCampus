@@ -28,16 +28,10 @@
 #pragma mark - 没有返回的navBar
 - (void)setNavBarHeaderTitle:(NSString *)title
 {
-    
+    self.title = title;
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"icon_back_normal" selectedImageName:@"icon_back_normal" target:self action:@selector(back)];
 }
 
-
-#pragma mark - 带返回的navBar
-- (void)setupBackBtnNavBarWithTitle:(NSString *)title
-
-{
-    
-}
 
 - (void)back{
     

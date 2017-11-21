@@ -10,10 +10,12 @@
 
 @interface HeaderCell : UITableViewCell
 
-+ (instancetype)tempWithTableView:(UITableView *)tableView;
++ (instancetype)tempWithTableView:(UITableView *)tableView andIndexPath:(NSIndexPath *)indexPath;
 
-+ (CGFloat)getHeight;
++ (CGFloat)getHeightWithIndexPath:(NSIndexPath *)indexPath;
 
-+ (instancetype)Cell;
++ (instancetype)CellWithIndex:(NSIndexPath *)indexPath;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *sView;
 
 @end

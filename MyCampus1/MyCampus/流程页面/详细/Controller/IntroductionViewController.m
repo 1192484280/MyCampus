@@ -36,7 +36,7 @@
     
     [self.view addSubview:self.tableView];
     
-    [self setupBackBtnNavBarWithTitle:@"介绍"];
+    [self setNavBarHeaderTitle:@"介绍"];
     
     
 }

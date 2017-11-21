@@ -9,6 +9,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#define iOS10 ([[UIDevice currentDevice].systemVersion doubleValue] >= 10.0)
+
 // 判断是否是iPhone X
 #define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 // 状态栏高度
@@ -48,11 +50,13 @@
 #import "UILabel+Extension.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "UIBarButtonItem+Extension.h"
+#import "CALayer+Addition.h"
 #import "Masonry.h"
 #import "LoadingView.h"
 #import "HttpTool.h"
 #import "FMDB.h"
 #import "UITextView+WZB.h"
+#import "LXAlertView.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

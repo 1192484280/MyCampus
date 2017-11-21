@@ -36,11 +36,19 @@
 
 - (void)reciveInfo:(NSString *)img{
     
+    
     [self.btn setImage:[UIImage imageNamed:img] forState:UIControlStateNormal];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+- (IBAction)onSelectedBtn:(UIButton *)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onSelectedBtnWithIndex:)]) {
+        
+        [self.delegate onSelectedBtnWithIndex:self.rowOfCell];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

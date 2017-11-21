@@ -36,10 +36,12 @@
     UIButton *weatherBtn = [[UIButton alloc] init];
     [weatherBtn setImage:[UIImage imageNamed:@"icon_wind"] forState:UIControlStateNormal];
     [self addSubview:weatherBtn];
+    [weatherBtn addTarget:self action:@selector(onWeatherBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.weatherBtn = weatherBtn;
     
     UIButton *settingBtn = [[UIButton alloc] init];
     [settingBtn setImage:[UIImage imageNamed:@"icon_setting"] forState:UIControlStateNormal];
+    [settingBtn addTarget:self action:@selector(onSettingBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:settingBtn];
     self.settingBtn = settingBtn;
     
@@ -54,7 +56,7 @@
     UIButton *titleBtn = [[UIButton alloc] init];
     [titleBtn setTitle:@"登陆/注册" forState:UIControlStateNormal];
 
-    [titleBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [titleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     titleBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     
@@ -71,7 +73,7 @@
     UIButton *couponBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [couponBtn setTitle:@"我的宿舍" forState:UIControlStateNormal];
     [couponBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [couponBtn setImage:[UIImage imageNamed:@"my_ntegrals"] forState:UIControlStateNormal];
+    [couponBtn setImage:[UIImage imageNamed:@"icon_home"] forState:UIControlStateNormal];
     couponBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     couponBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 3, 0, 0);
     couponBtn.width = ScreenWidth/2;
@@ -84,7 +86,7 @@
     UIButton *interalBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [interalBtn setTitle:@"我要巡逻" forState:UIControlStateNormal];
     [interalBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [interalBtn setImage:[UIImage imageNamed:@"my_coupon"] forState:UIControlStateNormal];
+    [interalBtn setImage:[UIImage imageNamed:@"icon_xunluo"] forState:UIControlStateNormal];
     interalBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     interalBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 3, 0, 0);
     interalBtn.width = ScreenWidth/2;
@@ -108,23 +110,41 @@
     }
 }
 
-#pragma mark - 点击优惠券
+#pragma mark - 点击左按钮
 - (void)onLeftBtn:(UIButton *)btn{
     
-    NSLog(@"点击优惠券");
+    NSLog(@"点击左按钮");
     if (self.delegate && [self.delegate respondsToSelector:@selector(onLeft)]) {
         
         [self.delegate onLeft];
     }
 }
 
-#pragma mark - 点击我的积分
+#pragma mark - 点击右按钮
 - (void)onRightBtn:(UIButton *)btn{
     
-    NSLog(@"点击我的积分");
+    NSLog(@"点击右按钮");
     if (self.delegate && [self.delegate respondsToSelector:@selector(onRight)]) {
         
         [self.delegate onRight];
+    }
+}
+
+#pragma mark - 天气
+- (void)onWeatherBtn:(UIButton *)btn{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onWeather)]) {
+        
+        [self.delegate onWeather];
+    }
+}
+
+#pragma mark - 设置
+- (void)onSettingBtn:(UIButton *)btn{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onSetting)]) {
+        
+        [self.delegate onSetting];
     }
 }
 

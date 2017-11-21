@@ -8,8 +8,9 @@
 
 #import "PlayViewController.h"
 #import "PlayCell.h"
+#import "TourViewController.h"
 
-@interface PlayViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface PlayViewController ()<UITableViewDelegate,UITableViewDataSource,PlayCellDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -58,11 +59,6 @@
     
     self.title = @"玩呗";
     
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    self.navigationController.navigationBar.barTintColor = BASECOLOR;
-    
-    //取消导航栏最下面的那一条线
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -81,6 +77,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     PlayCell *cell = [PlayCell tempWithTableView:tableView];
+    cell.selectionStyle = UITableViewCellEditingStyleNone;
+    cell.rowOfCell = indexPath.row;
+    cell.delegate = self;
     [cell reciveInfo:self.imgArr[indexPath.row]];
     return cell;
 }
@@ -117,11 +116,24 @@
      */
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)onSelectedBtnWithIndex:(NSInteger)index{
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (index) {
+        case 0:
+            [self goTour];
+            break;
+            
+        default:
+            break;
+    }
 }
 
+- (void)goTour{
+    
+    TourViewController *VC = [[TourViewController alloc] init];
+    [VC setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:VC animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

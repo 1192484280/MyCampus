@@ -47,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupBackBtnNavBarWithTitle:@"社团"];
+    [self setNavBarHeaderTitle:@"社团"];
     
     [self initData];
     

@@ -14,6 +14,8 @@
 - (void)onLogin;
 - (void)onLeft;
 - (void)onRight;
+- (void)onWeather;
+- (void)onSetting;
 
 @end
 

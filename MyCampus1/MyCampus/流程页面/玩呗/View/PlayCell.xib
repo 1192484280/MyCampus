@@ -27,6 +27,9 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="onSelectedBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="td0-Eh-FK1"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -43,6 +46,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_wanBtn_1" width="368" height="148"/>
+        <image name="icon_wanBtn_1" width="375" height="180"/>
     </resources>
 </document>

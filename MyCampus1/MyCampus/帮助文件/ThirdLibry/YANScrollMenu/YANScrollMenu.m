@@ -35,7 +35,7 @@
     item.iconSize = kScale(55);
     item.iconCornerRadius = kScale(27.5);
     item.textColor = [UIColor darkTextColor];
-    item.textFont = [UIFont systemFontOfSize:kScale(14)];
+    item.textFont = [UIFont fontWithName:@"FrLt DFGirl" size:17];
     
 }
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -75,6 +75,7 @@
     self.label.textColor = textColor;
     
 }
+
 - (void)setTextFont:(UIFont *)textFont{
     
     _textFont = textFont;
