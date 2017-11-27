@@ -40,8 +40,13 @@
 #define BASECOLOR [UIColor colorWithHexString:@"#FFED00"]
 #define FONTCOLOR [UIColor colorWithHexString:@"#4A4A4A"]
 #define LINECOLOR [UIColor colorWithHexString:@"#EEEEEE"]
+#define BTNCOLOR [UIColor colorWithHexString:@"#4990E2"]
+
+#define NAVBARCOLOR [UIColor colorWithHexString:@"#D0011B"]
 
 #define MJWeakSelf __weak typeof(self) weakSelf = self;
+
+#define MINIJIANQITI @"迷你简启体"
 
 #import "UIView+Extension.h"
 #import "UIButton+Extension.h"
@@ -57,6 +62,9 @@
 #import "FMDB.h"
 #import "UITextView+WZB.h"
 #import "LXAlertView.h"
+#import "CommonDefine.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "LoadingViewManager.h"
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

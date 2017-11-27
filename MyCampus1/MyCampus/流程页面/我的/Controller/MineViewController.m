@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "MeHeaderView.h"
 #import "SetViewController.h"
+#import "PostVideoViewController.h"
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource,MeHeaderViewDelegate>
 
@@ -255,6 +256,9 @@
 #pragma mark - 我的上传
 - (void)myUp{
     
+    PostVideoViewController *postVC= [[PostVideoViewController alloc] init];
+    [postVC setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:postVC animated:YES];
 }
 
 #pragma mark - 分享有礼
@@ -263,15 +267,10 @@
     [self.view insertSubview:self.bgView belowSubview:self.shareView];
     
     [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:0 animations:^{
-        self.shareView.y = ScreenHeight - 250 - (HOME_Bottom);
+        self.shareView.y = ScreenHeight - 270 - (HOME_Bottom);
         self.bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
         
     } completion:nil];
-//    [UIView animateWithDuration:0.3 animations:^{
-//
-//        self.shareView.y = ScreenHeight - 250 - (HOME_Bottom);
-//        self.bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
-//    }];
 }
 
 #pragma mark - 问题反馈

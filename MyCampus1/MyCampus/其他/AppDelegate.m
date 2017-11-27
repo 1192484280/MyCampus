@@ -17,7 +17,9 @@
 // 如果需要使用idfa功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
 
-@interface AppDelegate ()<JPUSHRegisterDelegate>
+#import "ZKADView.h"
+
+@interface AppDelegate ()<JPUSHRegisterDelegate,ZKADViewDelegate>
 
 @end
 
@@ -40,6 +42,12 @@ static NSString *appKey = @"aaf316825533dcea1469e72e";
     
     [self setup_APNs];
     [self setup_JpushdidFinishLaunchingWithOptions:launchOptions];
+    
+    /** 添加广告页 */
+    [self addADView];
+    
+    /** 获取广告图URL */
+    [self getADImageURL];
     
     return YES;
 }
@@ -90,7 +98,47 @@ static NSString *appKey = @"aaf316825533dcea1469e72e";
 }
 
 
+- (void)addADView
+{
+    ZKADView *adView = [[ZKADView alloc] init];
+    adView.tag = 100;
+    adView.duration = 5;
+    adView.waitTime = 5;
+    adView.skipType = SkipButtonTypeTimeAndText;
+    adView.options = ZKWebImageOptionDefault;
+    adView.delegate = self;
+    
+    // 必须先将adView添加到父视图上才能调用 reloadDataWithURL: 方法加载广告图
+    [self.window addSubview:adView];
+}
 
+- (void)getADImageURL
+{
+    // 此处推荐使用tag来获取adView，勿使用全局变量。因为在AppDelegate中将其设为全局变量时，不会被释放
+    ZKADView *adView = (ZKADView *)[self.window viewWithTag:100];
+    
+    // 模拟从服务器上获取广告图URL
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        NSString *urlString = @"http://c.hiphotos.baidu.com/image/pic/item/d62a6059252dd42a6a943c180b3b5bb5c8eab8e7.jpg";
+        
+        
+        [adView reloadDataWithURL:[NSURL URLWithString:urlString]]; // 加载广告图
+    });
+}
+
+#pragma mark -- ZKADView Delegate
+- (void)adImageLoadFinish:(ZKADView *)adView image:(UIImage *)image
+{
+    NSLog(@"%@", image);
+}
+
+- (void)adImageDidClick:(ZKADView *)adView
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://baidu.com"]
+                                       options:@{}
+                             completionHandler:nil];
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -171,5 +219,41 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
 }
 
+
+- (void)showPreView
+{
+    if (_preview == nil)
+    {
+        _preview = [[ImageAddPreView alloc] initWithFrame:CGRectMake(0, self.window.frame.size.height - 135, self.window.frame.size.width, 135)];
+        [_window addSubview:_preview];
+    }
+    
+    [_preview setAlpha:0];
+    [UIView animateWithDuration:0.2
+                          delay:0.1
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [_preview setAlpha:1];
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    [_preview setHidden:NO];
+}
+
+
+- (void)hiddenPreView
+{
+    [_preview setHidden:YES];
+    [_preview setAlpha:0];
+    [UIView animateWithDuration:0.1
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [_preview setAlpha:0];
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
 
 @end

@@ -1,9 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/JCore" "${PODS_ROOT}/Headers/Public/JPush"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/JCore" $(inherited) "${PODS_ROOT}/JPush"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/JCore" -isystem "${PODS_ROOT}/Headers/Public/JPush"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"jcore-ios-1.1.5" -l"jpush-ios-3.0.6" -l"resolv" -l"z" -framework "CFNetwork" -framework "CoreFoundation" -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -weak_framework "UserNotifications"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/JCore" "${PODS_ROOT}/Headers/Public/JPush" "${PODS_ROOT}/Headers/Public/TZImagePickerController" "${PODS_ROOT}/Headers/Public/UMengUShare"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/TZImagePickerController" $(inherited) "${PODS_ROOT}/JCore" $(inherited) "${PODS_ROOT}/JPush" $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDKPlugin" $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ" $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina" $(inherited) "${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/WeChat"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/JCore" -isystem "${PODS_ROOT}/Headers/Public/JPush" -isystem "${PODS_ROOT}/Headers/Public/TZImagePickerController" -isystem "${PODS_ROOT}/Headers/Public/UMengUShare"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"SocialQQ" -l"SocialSina" -l"SocialWeChat" -l"TZImagePickerController" -l"UMSocialLog" -l"jcore-ios-1.1.5" -l"jpush-ios-3.0.6" -l"resolv" -l"sqlite3" -l"z" -framework "AssetsLibrary" -framework "CFNetwork" -framework "CoreFoundation" -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "Photos" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -framework "UMSocialCore" -framework "UMSocialNetwork" -weak_framework "UserNotifications"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods
