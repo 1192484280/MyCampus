@@ -39,6 +39,9 @@
 		6B2619641FA724D1008D116F /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6B2619581FA724D1008D116F /* shop_area.sqlite */; };
 		6B280C641FCC10E400660795 /* ZKADView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B280C601FCC10E400660795 /* ZKADView.m */; };
 		6B280C651FCC10E400660795 /* ZKWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B280C631FCC10E400660795 /* ZKWebImage.m */; };
+		6B280C6A1FCC161E00660795 /* PostPicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B280C691FCC161E00660795 /* PostPicViewController.m */; };
+		6B280C701FCC167000660795 /* PostPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B280C6E1FCC167000660795 /* PostPicCell.m */; };
+		6B280C711FCC167000660795 /* PostPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B280C6F1FCC167000660795 /* PostPicCell.xib */; };
 		6B28A3581FBED84D002EF43F /* ArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28A3561FBED84D002EF43F /* ArticleCell.m */; };
 		6B28A3591FBED84D002EF43F /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B28A3571FBED84D002EF43F /* ArticleCell.xib */; };
 		6B28A35F1FBEDE0B002EF43F /* PhotographyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28A35D1FBEDE0B002EF43F /* PhotographyViewController.m */; };
@@ -638,6 +641,11 @@
 		6B280C611FCC10E400660795 /* ZKWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKWebImage.h; sourceTree = "<group>"; };
 		6B280C621FCC10E400660795 /* ZKADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKADView.h; sourceTree = "<group>"; };
 		6B280C631FCC10E400660795 /* ZKWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKWebImage.m; sourceTree = "<group>"; };
+		6B280C681FCC161E00660795 /* PostPicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostPicViewController.h; sourceTree = "<group>"; };
+		6B280C691FCC161E00660795 /* PostPicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPicViewController.m; sourceTree = "<group>"; };
+		6B280C6D1FCC167000660795 /* PostPicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostPicCell.h; sourceTree = "<group>"; };
+		6B280C6E1FCC167000660795 /* PostPicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPicCell.m; sourceTree = "<group>"; };
+		6B280C6F1FCC167000660795 /* PostPicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPicCell.xib; sourceTree = "<group>"; };
 		6B28A3551FBED84D002EF43F /* ArticleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleCell.h; sourceTree = "<group>"; };
 		6B28A3561FBED84D002EF43F /* ArticleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleCell.m; sourceTree = "<group>"; };
 		6B28A3571FBED84D002EF43F /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
@@ -1666,6 +1674,44 @@
 			path = ADView;
 			sourceTree = "<group>";
 		};
+		6B280C661FCC15E400660795 /* 文本贴 */ = {
+			isa = PBXGroup;
+			children = (
+				6B5D3ABB1FAAECD7000FDB0C /* PostItemViewController.h */,
+				6B5D3ABC1FAAECD7000FDB0C /* PostItemViewController.m */,
+				6B5D3ABD1FAAECD7000FDB0C /* PostItemViewController.xib */,
+			);
+			path = "文本贴";
+			sourceTree = "<group>";
+		};
+		6B280C671FCC15FB00660795 /* 图文帖 */ = {
+			isa = PBXGroup;
+			children = (
+				6B280C6C1FCC163800660795 /* View */,
+				6B280C6B1FCC162400660795 /* Controller */,
+			);
+			path = "图文帖";
+			sourceTree = "<group>";
+		};
+		6B280C6B1FCC162400660795 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B280C681FCC161E00660795 /* PostPicViewController.h */,
+				6B280C691FCC161E00660795 /* PostPicViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6B280C6C1FCC163800660795 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B280C6D1FCC167000660795 /* PostPicCell.h */,
+				6B280C6E1FCC167000660795 /* PostPicCell.m */,
+				6B280C6F1FCC167000660795 /* PostPicCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6B28A3541FBED401002EF43F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2218,9 +2264,8 @@
 		6B5D3ABA1FAAE880000FDB0C /* 发帖 */ = {
 			isa = PBXGroup;
 			children = (
-				6B5D3ABB1FAAECD7000FDB0C /* PostItemViewController.h */,
-				6B5D3ABC1FAAECD7000FDB0C /* PostItemViewController.m */,
-				6B5D3ABD1FAAECD7000FDB0C /* PostItemViewController.xib */,
+				6B280C671FCC15FB00660795 /* 图文帖 */,
+				6B280C661FCC15E400660795 /* 文本贴 */,
 			);
 			path = "发帖";
 			sourceTree = "<group>";
@@ -4483,6 +4528,7 @@
 				6B8252AE1FC5179700C04F7B /* makecards_picture_turnoff_icon.png in Resources */,
 				6B9C12231FBA961000854F24 /* TourShowCell.xib in Resources */,
 				6B82529F1FC5179700C04F7B /* border_1.png in Resources */,
+				6B280C711FCC167000660795 /* PostPicCell.xib in Resources */,
 				6B8252431FC5179700C04F7B /* record_close_highlighted.png in Resources */,
 				6B82522C1FC5179700C04F7B /* record_tool_disable.png in Resources */,
 				6BA2E1CB1F28956C00588F2E /* Assets.xcassets in Resources */,
@@ -4722,6 +4768,7 @@
 				6B8ECA291FBD2306000D20F5 /* UIViewAdditions.m in Sources */,
 				6B8253731FC51F9C00C04F7B /* UpLoadingView.m in Sources */,
 				6BA2E1CA1F28956C00588F2E /* AppDelegate.m in Sources */,
+				6B280C6A1FCC161E00660795 /* PostPicViewController.m in Sources */,
 				6B82531F1FC5179700C04F7B /* KxMenu.m in Sources */,
 				6B4E15A31F29E03E00899A9F /* NSObject+MJClass.m in Sources */,
 				6B4E15881F29E03E00899A9F /* IQBarButtonItem.m in Sources */,
@@ -4878,6 +4925,7 @@
 				6B4E15A41F29E03E00899A9F /* NSObject+MJCoding.m in Sources */,
 				6B82535D1FC518A500C04F7B /* VideEditViewController.m in Sources */,
 				6B4E158F1F29E03E00899A9F /* README.md in Sources */,
+				6B280C701FCC167000660795 /* PostPicCell.m in Sources */,
 				6B4E15D71F29E03E00899A9F /* SingleManager.m in Sources */,
 				6B993C371FA86C8C007C1510 /* LLSearchHistorySaveUtils.m in Sources */,
 				6B48F5CF1F8F18B100FE90B4 /* SDWebImageDecoder.m in Sources */,
@@ -5040,7 +5088,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/zhangming/Desktop/MyCampus/MyCampus1/PrefixHeader.pch;
-				INFOPLIST_FILE = "/Users/zhangming/Desktop/MyCampus1/MyCampus/其他/Info.plist";
+				INFOPLIST_FILE = "/Users/zhangming/Desktop/MyCampus/MyCampus1/MyCampus/其他/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youjiesi.MyCampus;
@@ -5062,7 +5110,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = /Users/zhangming/Desktop/MyCampus/MyCampus1/PrefixHeader.pch;
-				INFOPLIST_FILE = "/Users/zhangming/Desktop/MyCampus1/MyCampus/其他/Info.plist";
+				INFOPLIST_FILE = "/Users/zhangming/Desktop/MyCampus/MyCampus1/MyCampus/其他/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youjiesi.MyCampus;
