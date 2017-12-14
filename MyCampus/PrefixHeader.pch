@@ -1,0 +1,69 @@
+//
+//  PrefixHeader.pch
+//  MyCampus
+//
+//  Created by zhangming on 2017/12/13.
+//  Copyright © 2017年 youjiesi. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+// 判断是否是iPhone X
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// 状态栏高度
+#define STATUS_BAR_HEIGHT (iPhoneX ? 44.f : 20.f)
+// 导航栏高度
+#define iPhoneX_Top iPhoneX ? 88.0f : 64.0f
+// home indicator
+#define iPhoneX_Bottom iPhoneX ? 34.0f : 0.0f
+// tabBar高度
+#define TABBAR_HEIGHT (iPhoneX ? (49.f+34.f) : 49.f)
+
+#define BTNCOLOR [UIColor colorWithHexString:@"#21BDFA"]
+#define NAVBARCOLOR [UIColor colorWithHexString:@"#FF3C54"]
+#define BASECOLOR [UIColor colorWithHexString:@"#FFED00"]
+#define LINECOLOR [UIColor colorWithHexString:@"#EEEEEE"]
+#define REDCOLOR [UIColor colorWithHexString:@"#EE2247"]
+//成功返回的标志
+#define SuccessResponseCode 1
+
+//网络回传失败域
+#define ResponseFailureDomain @"ResponseFailureDomain"
+
+#define MINIJIANQITI @"迷你简启体"
+
+#define MJWeakSelf __weak typeof(self) weakSelf = self;
+#define CLASSNAME NSString *className = NSStringFromClass([self class]);
+
+#define iOS10 ([[UIDevice currentDevice].systemVersion doubleValue] >= 10.0)
+
+#define ADHeight 220
+#define CATHeight 240
+#define HORADHEIGHT 50
+#define HORADWIDTH 110
+#define RECOMMENDHEIGHT 200
+
+#import "UIView+Extension.h"
+#import "UILabel+Extension.h"
+#import "UIImage+Extension.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "UIButton+Extension.h"
+#import "UIColor+Extension.h"
+#import "CALayer+Addition.h"
+#import "UIBarButtonItem+Extension.h"
+#import "NSString+Extension.h"
+#import "NSDate+Extension.h"
+#import "CommonDefine.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "HttpTool.h"
+#import "SingleManager.h"
+#import "Masonry.h"
+#import "LXAlertView.h"
+#import "UITextView+WZB.h"
+
+#endif

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lunhua07" translatesAutoresizingMaskIntoConstraints="NO" id="5bp-BZ-iWT">
+                    <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBE-oC-oTS">
+                    <rect key="frame" x="137" y="60" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="FvG-cy-XpF"/>
+                        <constraint firstAttribute="height" constant="30" id="o2W-a1-N6W"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="设置标题">
+                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHz-jG-6ba">
+                    <rect key="frame" x="6" y="114" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="CiV-B0-uOa"/>
+                        <constraint firstAttribute="height" constant="30" id="bXS-YV-WYq"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="add_face"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOn-eS-QMR">
+                    <rect key="frame" x="268" y="114" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="Ji7-Gy-oyP"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="S1G-fQ-rgJ"/>
+                        <constraint firstAttribute="height" constant="30" id="T78-YF-pBF"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="wSz-ir-Dwg"/>
+                    </constraints>
+                    <state key="normal" image="add_music"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xOn-eS-QMR" secondAttribute="trailing" constant="6" id="64w-N4-aI5"/>
+                <constraint firstItem="qHz-jG-6ba" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="AMX-ZM-acF"/>
+                <constraint firstAttribute="bottom" secondItem="xOn-eS-QMR" secondAttribute="bottom" constant="6" id="BNd-6b-wuA"/>
+                <constraint firstItem="zBE-oC-oTS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Gwt-h2-w79"/>
+                <constraint firstAttribute="trailing" secondItem="5bp-BZ-iWT" secondAttribute="trailing" id="L5c-qh-dRF"/>
+                <constraint firstItem="5bp-BZ-iWT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Pyz-cg-mJ6"/>
+                <constraint firstAttribute="bottom" secondItem="5bp-BZ-iWT" secondAttribute="bottom" id="Q29-lj-YaM"/>
+                <constraint firstAttribute="bottom" secondItem="qHz-jG-6ba" secondAttribute="bottom" constant="6" id="VWt-Kq-F4z"/>
+                <constraint firstItem="zBE-oC-oTS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bg4-Bn-kaZ"/>
+                <constraint firstItem="5bp-BZ-iWT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ehu-KJ-QQq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="32" y="-145"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add_face" width="100" height="30"/>
+        <image name="add_music" width="100" height="30"/>
+        <image name="lunhua07" width="954" height="920"/>
+    </resources>
+</document>
